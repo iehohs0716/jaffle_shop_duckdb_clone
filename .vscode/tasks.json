@@ -1,0 +1,26 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "dbt build",
+            "type": "shell",
+            "command": "uv run dbt build",
+            "detail": "uv環境上でパイプラインを実行する関数",
+            "problemMatcher": []
+        },
+        {
+            "label": "jaffle_shop.duckdbを対象にしたduckcli起動",
+            "type": "shell",
+            "command": "uv run duckcli jaffle_shop.duckdb",
+            "detail": "uv環境上でパイプラインを実行する関数"
+        },
+        {
+            "label": "変換後テーブルにサンプルクエリを発行",
+            "type": "shell",
+            "command": "cat myquery/jaffle_shop/sample.sql | xargs -I{} uv run duckcli jaffle_shop.duckdb -e{}",
+            "detail": "sqlは自由にいじってOK"
+        }
+    ]
+}
